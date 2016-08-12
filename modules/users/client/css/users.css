@@ -34,3 +34,11 @@
   min-height: 150px;
   max-height: 150px;
 }
+
+.form-signin{
+  background-color: white;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: white; /*#D8D8D8;*/
+  padding:12px;
+}
