@@ -9,7 +9,7 @@ var customersPolicy = require('../policies/customers.server.policy'),
 module.exports = function (app) {
   // Customers collection routes
   app.route('/api/customers').all(customersPolicy.isAllowed)
-    .get(customers.list)
+    .get(customers.mine)
     .post(customers.create);
 
   // Single customer routes

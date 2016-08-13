@@ -78,9 +78,9 @@ exports.delete = function (req, res) {
 };
 
 /**
- * List of Customers
+ * List of Customers of current user
  */
-exports.list = function (req, res) {
+exports.mine = function (req, res) {
   Customer.find({ 'user': req.user._id }).sort('-created').populate('user', 'displayName').exec(function (err, customers) {
     if (err) {
       return res.status(400).send({

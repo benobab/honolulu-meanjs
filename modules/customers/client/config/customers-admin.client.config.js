@@ -11,7 +11,7 @@
   function menuConfig(Menus) {
     Menus.addSubMenuItem('topbar', 'admin', {
       title: 'Manage Customers',
-      state: 'admin.customers.list'
+      state: 'admin.customers.mine'
     });
   }
 }());

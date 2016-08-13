@@ -17,8 +17,8 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'customers', {
-      title: 'Manage Customers',
-      state: 'customers.list',
+      title: 'My Customers',
+      state: 'customers.mine',
       roles: ['*']
     });
     menuService.addSubMenuItem('topbar', 'customers', {

@@ -14,13 +14,13 @@
         url: '/customers',
         template: '<ui-view/>'
       })
-      .state('customers.list', {
+      .state('customers.mine', {
         url: '',
         templateUrl: 'modules/customers/client/views/list-customers.client.view.html',
         controller: 'CustomersListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Customers List'
+          pageTitle: 'My Customers'
         }
       })
       .state('customers.create', {

@@ -14,7 +14,7 @@
         url: '/customers',
         template: '<ui-view/>'
       })
-      .state('admin.customers.list', {
+      .state('admin.customers.mine', {
         url: '',
         templateUrl: 'modules/customers/client/views/admin/list-customers.client.view.html',
         controller: 'CustomersListController',
