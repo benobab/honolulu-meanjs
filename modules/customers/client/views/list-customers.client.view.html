@@ -2,18 +2,17 @@
   <div class="page-header">
     <div class="row">
       <div class="col-xs-6 pull-left">
-        <h1>Customers</h1>
+        <h1>My Customers</h1>
       </div>
       <div class="col-xs-4 col-xs-offset-1 pull-right">
         <button class=" pull-right btn btn-success btn-lg" data-ui-sref="customers.create"><i class="glyphicon glyphicon-plus"></i></button>
       </div>
     </div>
-    
-
   </div>
   <div class="list-group">
-    <a ng-repeat="customer in vm.customers" ui-sref="customers.view({ customerId: customer._id })" class="list-group-item">
-      <small class="list-group-item-text">
+    <a ng-repeat="customer in vm.customers" ui-sref="customers.view({ customerId: customer._id })" class="list-group-item well text-center">
+      <span class="text-center">{{customer.firstname + ' ' + customer.lastname + ' ' + customer.email }}</span>
+      <small class="list-group-item-text pull-right">
         Posted on
         <span ng-bind="customer.created | date:'mediumDate'"></span>
         by

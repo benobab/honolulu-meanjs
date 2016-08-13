@@ -21,5 +21,10 @@
       state: 'customers.list',
       roles: ['*']
     });
+    menuService.addSubMenuItem('topbar', 'customers', {
+      title: 'Create new Customer',
+      state: 'customers.create',
+      roles: ['*']
+    });
   }
 }());
