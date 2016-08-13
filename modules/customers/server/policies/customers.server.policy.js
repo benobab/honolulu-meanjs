@@ -25,7 +25,7 @@ exports.invokeRolesPolicies = function () {
     roles: ['user'],
     allows: [{
       resources: '/api/customers',
-      permissions: ['get','post']
+      permissions: ['get', 'post']
     }, {
       resources: '/api/customers/:customerId',
       permissions: ['get']
@@ -46,6 +46,9 @@ exports.isAllowed = function (req, res, next) {
 
   // Check for user roles
   acl.areAnyRolesAllowed(roles, req.route.path, req.method.toLowerCase(), function (err, isAllowed) {
+    console.log(roles);
+    console.log(req.route.path);
+    console.log(req.method.toLowerCase());
     if (err) {
       // An authorization error occurred
       return res.status(500).send('Unexpected authorization error');

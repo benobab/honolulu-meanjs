@@ -37,7 +37,7 @@
         .catch(errorCallback);
 
       function successCallback(res) {
-        $state.go('admin.customers.list'); // should we send the User to the list or the updated Customer's view?
+        $state.go('customers.list'); // should we send the User to the list or the updated Customer's view?
       }
 
       function errorCallback(res) {
