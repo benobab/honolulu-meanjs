@@ -9,20 +9,15 @@
       </div>
     </div>
   </div>
-  <div class="list-group">
-    <a ng-repeat="customer in vm.customers" ui-sref="customers.view({ customerId: customer._id })" class="list-group-item well text-center">
-      <span class="text-center">{{customer.firstname + ' ' + customer.lastname + ' ' + customer.email }}</span>
-      <small class="list-group-item-text pull-right">
-        Posted on
-        <span ng-bind="customer.created | date:'mediumDate'"></span>
-        by
-        <span ng-if="customer.user" ng-bind="customer.user.displayName"></span>
-        <span ng-if="!customer.user">Deleted User</span>
-      </small>
-      <h4 class="list-group-item-heading" ng-bind="customer.title"></h4>
-      <p class="list-group-item-text" ng-bind="customer.content"></p>
-    </a>
-  </div>
+    <div ng-repeat="customer in vm.customers" class="well text-center col-xs-10 col-xs-offset-1 col-md-2 col-md-offset-1">
+      <div class="row">
+        <a ui-sref="customers.view({ customerId: customer._id })" class="customer-link">
+          <div class="">
+            <span class="text-center">{{customer.firstname + ' ' + customer.lastname + ' ' + customer.email }}</span>
+          </div>
+        </a>
+      </div>
+    </div>
    <div class="alert alert-warning text-center" data-ng-if="!vm.customers.length">
     No customers yet, why don't you <a data-ui-sref="customers.create">create one</a>?
   </div>
