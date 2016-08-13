@@ -12,12 +12,12 @@
       title: 'Customers',
       state: 'customers',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['user']
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'customers', {
-      title: 'List Customers',
+      title: 'Manage Customers',
       state: 'customers.list',
       roles: ['*']
     });
