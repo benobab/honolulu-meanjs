@@ -14,13 +14,45 @@ var CustomerSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  title: {
+  firstname: {
     type: String,
     default: '',
-    trim: true,
-    required: 'Title cannot be blank'
+    trim: true
   },
-  content: {
+  surname: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  suburb: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  country: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  industry: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  email: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  phone: {
+    type: String,
+    default: '',
+    trim: true
+  },
+  referred: {
+    type: Boolean
+  },
+  channel: {
     type: String,
     default: '',
     trim: true
