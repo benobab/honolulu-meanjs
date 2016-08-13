@@ -29,7 +29,7 @@
         controller: 'CustomersController',
         controllerAs: 'vm',
         data: {
-          roles: ['admin']
+          roles: ['admin,user']
         },
         resolve: {
           customerResolve: newCustomer

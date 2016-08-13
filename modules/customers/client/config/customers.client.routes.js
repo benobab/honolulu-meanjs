@@ -23,6 +23,18 @@
           pageTitle: 'Customers List'
         }
       })
+      .state('customers.create', {
+        url: '/create',
+        templateUrl: 'modules/customers/client/views/admin/form-customer.client.view.html',
+        controller: 'CustomersController',
+        controllerAs: 'vm',
+        data: {
+          roles: ['user']
+        },
+        resolve: {
+          customerResolve: newCustomer
+        }
+      })
       .state('customers.view', {
         url: '/:customerId',
         templateUrl: 'modules/customers/client/views/view-customer.client.view.html',
@@ -44,4 +56,11 @@
       customerId: $stateParams.customerId
     }).$promise;
   }
+
+  newCustomer.$inject = ['CustomersService'];
+
+  function newCustomer(CustomersService) {
+    return new CustomersService();
+  }
+
 }());
