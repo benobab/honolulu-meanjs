@@ -81,7 +81,7 @@ exports.delete = function (req, res) {
  * List of Customers
  */
 exports.list = function (req, res) {
-  Customer.find({ 'user[type]': req.user.ObjectId }).sort('-created').populate('user', 'displayName').exec(function (err, customers) {
+  Customer.find({ 'user': req.user._id }).sort('-created').populate('user', 'displayName').exec(function (err, customers) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
