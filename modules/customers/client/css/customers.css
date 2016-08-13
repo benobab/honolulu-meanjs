@@ -1,6 +1,9 @@
 .cust-profile{
     font-size:150px;
 }
+.cust-profile-list{
+    font-size:110px;
+}
 
 .customer-link{
     color: black;
@@ -15,4 +18,8 @@
 .customers-list-item{
     margin:5px;
     border-color: white;
+}
+
+.margin-top-5{
+    margin-top: 5px;
 }
