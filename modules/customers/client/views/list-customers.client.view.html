@@ -22,7 +22,7 @@
   
   <div class="list-group">
     <div class="col-xs-6 col-sm-4" ng-repeat="customer in vm.customers |filter:searchText">
-      <a  ng-click="vm.modalUpdate('lg',customer)" class="list-group-item customers-list-item"> <!-- ui-sref="customers.view({ customerId: customer._id })" -->
+      <a  ui-sref="customers.view({ customerId: customer._id })" class="list-group-item customers-list-item">
         <div ng-class="{'text-primary': customer.referred, 'text-danger':!customer.referred}" class="text-center">
           <i class="glyphicon glyphicon-user cust-profile-list" aria-hidden="true"></i>
         </div>
