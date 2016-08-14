@@ -15,7 +15,6 @@
     vm.authentication = Authentication;
     vm.error = null;
 
-    vm.save = save;
     vm.remove = remove;
     // Modal UI to update customer!
     vm.animationsEnabled = true;
@@ -62,30 +61,10 @@
     };
 
     // Remove existing Customer
-    function remove() {
-      if ($window.confirm('Are you sure you want to delete?')) {
-        vm.customer.$remove($state.go('admin.customers.list'));
-      }
-    }
-
-    // Save Customer
-    function save(updatedCustomer) {
-      // if (!isValid) {
-      //   $scope.$broadcast('show-errors-check-validity', 'vm.form.customerForm');
-      //   return false;
-      // }
-      console.log(updatedCustomer);
-      // Create a new customer, or update the current instance
-      updatedCustomer.createOrUpdate()
-        .then(successCallback)
-        .catch(errorCallback);
-
-      function successCallback(res) {
-        // $state.go('customers.mine'); // should we send the User to the list or the updated Customer's view?
-      }
-
-      function errorCallback(res) {
-        vm.error = res.data.message;
+    function remove(customer) {
+      if ($window.confirm('Are you sure you want to delete this customer?')) {
+        // TODO
+        customer.$remove($state.go('customers.mine'));
       }
     }
   }
@@ -97,7 +76,6 @@
     // Update existing Customer
     this.update = function(updatedCustomer) {
       var customer = updatedCustomer;
-      console.log(customer.firstname);
       // Create a new customer, or update the current instance
       customer.createOrUpdate()
         .then(successCallback)
