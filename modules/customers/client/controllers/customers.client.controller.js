@@ -4,7 +4,7 @@
   angular
     .module('customers')
     .controller('CustomersController', CustomersController)
-    .controller('CustomerUpdateController', CustomerUpdateController);
+    .controller('CustomerCreateController', CustomerCreateController);
 
   CustomersController.$inject = ['$scope', '$state', '$window', 'customerResolve', 'Authentication', '$uibModal', '$log'];// modal and log for modal UI
 
@@ -19,10 +19,6 @@
     // Modal UI to update customer!
     vm.animationsEnabled = true;
 
-    vm.sayHi = function() {
-      console.log('Hi!');
-    };
-
     // modalUpdate is the function called from the front
     vm.modalUpdate = function (size, selectedCustomer) {
       var modalInstance = $uibModal.open({
@@ -36,10 +32,20 @@
           $scope.ok = function () {
             $uibModalInstance.close($scope.customer);
           };
-
-          $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
+          $scope.save = function () {
+            $scope.customer.createOrUpdate()
+            .then(successCallback)
+            .catch(errorCallback);
           };
+
+          function successCallback(res) {
+            // $state.go('customers.mine'); // should we send the User to the list or the updated Customer's view?
+            // $state.go('customers.view');
+          }
+
+          function errorCallback(res) {
+            this.error = res.data.message;
+          }
         },
         size: size,
         resolve: {
@@ -69,21 +75,24 @@
     }
   }
 
-  CustomerUpdateController.$inject = ['$scope', 'CustomersService'];
+  CustomerCreateController.$inject = ['$scope', 'CustomersService', '$state', '$stateParams'];
 
-  function CustomerUpdateController($scope, CustomersService) {
-
+  function CustomerCreateController($scope, CustomersService, $state, $stateParams) {
+    var vm = this;
+    vm.customer = new CustomersService();
     // Update existing Customer
-    this.update = function(updatedCustomer) {
-      var customer = updatedCustomer;
+    vm.save = function(customerToUpdateOrCreate) {
+      var cust = vm.customer;
+      console.log(cust);
       // Create a new customer, or update the current instance
-      customer.createOrUpdate()
+      cust.createOrUpdate()
         .then(successCallback)
         .catch(errorCallback);
 
       function successCallback(res) {
         // $state.go('customers.mine'); // should we send the User to the list or the updated Customer's view?
-        // $state.go('customers.view');
+        $state.go('customers.view', { 'customerId': res._id });
+        // $location.path('customers/' + res._id);
       }
 
       function errorCallback(res) {

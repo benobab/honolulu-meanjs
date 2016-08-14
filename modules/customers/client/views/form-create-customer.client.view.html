@@ -1,4 +1,4 @@
-<section class="customer-detail-modal container">
+<section class="customer-detail-modal container" ng-controller="CustomerCreateController as updateCtrl">
   <div class="page-header">
     <h1>{{customer._id ? 'Edit Customer' : 'Create Customer'}}</h1>
   </div>
@@ -18,19 +18,19 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="firstname" ng-model="customer.firstname" class="form-control" placeholder="Firstname" aria-describedby="basic-addon1">
+                    <input type="text" id="firstname" ng-model="updateCtrl.customer.firstname" class="form-control" placeholder="Firstname" aria-describedby="basic-addon1">
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="lastname" ng-model="customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1">
+                    <input type="text" id="lastname" ng-model="updateCtrl.customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1">
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-map-marker"></i></span>
-                    <input type="text" id="suburb" ng-model="customer.suburb" class="form-control" placeholder="Suburb" aria-describedby="basic-addon1">
+                    <input type="text" id="suburb" ng-model="updateCtrl.customer.suburb" class="form-control" placeholder="Suburb" aria-describedby="basic-addon1">
               </div>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-flag"></i></span>
-                    <input type="text" id="country" ng-model="customer.country" class="form-control" placeholder="Country" aria-describedby="basic-addon1">
+                    <input type="text" id="country" ng-model="updateCtrl.customer.country" class="form-control" placeholder="Country" aria-describedby="basic-addon1">
                     <div ng-messages="form.customerForm.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Country is required.</p>
                     </div>
@@ -49,7 +49,7 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-briefcase"></i></span>
-                    <input type="text" id="industry" ng-model="customer.industry" class="form-control" placeholder="Industry" aria-describedby="basic-addon1">
+                    <input type="text" id="industry" ng-model="updateCtrl.customer.industry" class="form-control" placeholder="Industry" aria-describedby="basic-addon1">
                     <div ng-messages="form.customerForm.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Industry is required.</p>
                     </div>
@@ -60,7 +60,7 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input type="text" id="email" ng-model="customer.email" class="form-control" placeholder="email@email.com" aria-describedby="basic-addon1" required>
+                    <input type="text" id="email" ng-model="updateCtrl.customer.email" class="form-control" placeholder="email@email.com" aria-describedby="basic-addon1" required>
                     <div ng-messages="form.customerForm.email.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Email is required.</p>
                     </div>
@@ -69,7 +69,7 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone"></i></span>
-                    <input type="text" id="phone" ng-model="customer.phone" class="form-control" placeholder="Phone number" aria-describedby="basic-addon1" required>
+                    <input type="text" id="phone" ng-model="updateCtrl.customer.phone" class="form-control" placeholder="Phone number" aria-describedby="basic-addon1" required>
                     <div ng-messages="form.customerForm.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Phone is required.</p>
                     </div>
@@ -82,7 +82,7 @@
               <div class="form-group">
               <div class="input-group input-group-lg">
                 <label class="control-label" for="referred">Referred</label>
-                <input type="checkbox" id="referred" ng-model="customer.referred" class="form-control" aria-describedby="basic-addon1">
+                <input type="checkbox" id="referred" ng-model="updateCtrl.customer.referred" class="form-control" aria-describedby="basic-addon1">
               </div>
             </div>
           </div>
@@ -90,10 +90,10 @@
             <div class="form-group">
               <div class="row">
                 <div class="col-xs-3 pull-right">
-                   <button class="btn btn-warning btn-lg btn-block" ng-click="cancel()">Cancel</button>
+                   <button class="btn btn-warning btn-lg btn-block" ng-click="updateCtrl.cancel()">Cancel</button>
                 </div>
                 <div class="col-xs-9">   
-                 <button  class="btn btn-block btn-lg btn-success" ng-click="save(customer); ok()" ng-disabled="form.customerForm.$invalid">{{customer._id ? 'Update and Close' : 'Create'}}</button>
+                 <button  class="btn btn-block btn-lg btn-success" ng-click="updateCtrl.save(customer); updateCtrl.ok()" ng-disabled="form.customerForm.$invalid">{{customer._id ? 'Update and Close' : 'Create'}}</button>
                 </div>
               </div>
             </div>

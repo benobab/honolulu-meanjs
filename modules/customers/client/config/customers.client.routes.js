@@ -25,9 +25,7 @@
       })
       .state('customers.create', {
         url: '/create',
-        templateUrl: 'modules/customers/client/views/admin/form-customer.client.view.html',
-        controller: 'CustomersController',
-        controllerAs: 'vm',
+        templateUrl: 'modules/customers/client/views/form-create-customer.client.view.html',
         data: {
           roles: ['user']
         },
