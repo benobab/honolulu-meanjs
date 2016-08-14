@@ -45,4 +45,20 @@ a:hover .header-profile-image {
 body {
     background-color: #F7F7F7;
 }
+/*Field modified and invalid*/
+.ng-dirty.ng-invalid{
+    border-color: red;
+}
+/*Field modified and valid*/
+.ng-dirty.ng-valid{
+    border-color:green;
+}
 
+/*Field touched and invalid*/
+.ng-touched.ng-invalid{
+    border-color: red;
+}
+/*Field touched and valid*/
+.ng-touched.ng-valid{
+    border-color:green;
+}
