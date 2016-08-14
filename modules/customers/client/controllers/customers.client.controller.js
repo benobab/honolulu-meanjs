@@ -30,7 +30,9 @@
             $uibModalInstance.dismiss('cancel');
           };
           $scope.ok = function () {
-            $uibModalInstance.close($scope.customer);
+            if ($scope.updateCustomerForm.$valid) {
+              $uibModalInstance.close($scope.customer);
+            }
           };
           $scope.save = function () {
             $scope.customer.createOrUpdate()

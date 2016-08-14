@@ -1,9 +1,9 @@
 <section class="customer-detail-modal container">
   <div class="page-header">
-    <h1>{{customer._id ? 'Edit Customer' : 'Create Customer'}}</h1>
+    <h1>Update {{customer.firstname + ' '+ customer.lastname}}</h1>
   </div>
   <div class="col-xs-12">
-    <form>
+    <form name="updateCustomerForm">
       <fieldset>
         <uib-alert type="danger" ng-show="error" class="text-center text-danger">
           <span ng-bind="error"></span>
@@ -18,13 +18,13 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="firstname" ng-model="customer.firstname" class="form-control" placeholder="Firstname" aria-describedby="basic-addon1">
+                    <input type="text" id="firstname" ng-model="customer.firstname" class="form-control" placeholder="Firstname" aria-describedby="basic-addon1" required>
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="lastname" ng-model="customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1">
+                    <input type="text" id="lastname" ng-model="customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1" required>
               </div>
             </div>
             <div class="form-group">

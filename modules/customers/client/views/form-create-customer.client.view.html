@@ -3,14 +3,14 @@
     <h1>{{customer._id ? 'Edit Customer' : 'Create Customer'}}</h1>
   </div>
   <div class="col-xs-12">
-    <form>
+    <form name="createCustomerForm">
       <fieldset>
         <uib-alert type="danger" ng-show="error" class="text-center text-danger">
           <span ng-bind="error"></span>
         </uib-alert>
         <div class="row">
           <div class="col-sm-6 col-xs-12 text-center">
-            <div ng-class="{'text-primary': customer.referred, 'text-danger':!customer.referred}">
+            <div ng-class="{'text-primary': updateCtrl.customer.referred, 'text-danger':!updateCtrl.customer.referred}">
               <i class="glyphicon glyphicon-user cust-profile" aria-hidden="true"></i>
             </div>
           </div>
@@ -18,13 +18,13 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="firstname" ng-model="updateCtrl.customer.firstname" class="form-control" placeholder="Firstname" aria-describedby="basic-addon1">
+                    <input type="text" id="firstname" ng-model="updateCtrl.customer.firstname" class="form-control" placeholder="Firstname" aria-describedby="basic-addon1" required>
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="lastname" ng-model="updateCtrl.customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1">
+                    <input type="text" id="lastname" ng-model="updateCtrl.customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1" required>
               </div>
             </div>
             <div class="form-group">
@@ -41,18 +41,12 @@
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-flag"></i></span>
                     <input type="text" id="country" ng-model="updateCtrl.customer.country" class="form-control" placeholder="Country" aria-describedby="basic-addon1">
-                    <div ng-messages="form.customerForm.$error" role="alert">
-                      <p class="help-block error-text" ng-message="required">Country is required.</p>
-                    </div>
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-briefcase"></i></span>
                     <input type="text" id="industry" ng-model="updateCtrl.customer.industry" class="form-control" placeholder="Industry" aria-describedby="basic-addon1">
-                    <div ng-messages="form.customerForm.$error" role="alert">
-                      <p class="help-block error-text" ng-message="required">Industry is required.</p>
-                    </div>
               </div>
             </div>
           </div>
@@ -80,10 +74,12 @@
         <div class="row">
           <div class="col-sm-6 col-xs-12">
               <div class="form-group">
-              <div class="input-group input-group-lg">
-                <label class="control-label" for="referred">Referred</label>
-                <input type="checkbox" id="referred" ng-model="updateCtrl.customer.referred" class="form-control" aria-describedby="basic-addon1">
-              </div>
+                <div class="input-group input-group-lg">
+                  <span class="input-group-addon">
+                    <input type="checkbox" id="referred" ng-model="updateCtrl.customer.referred"aria-label="referred">
+                  </span>
+                  <label type="text" class="form-control"  aria-label="referred">Referred</label>
+                </div><!-- /input-group -->
             </div>
           </div>
           <div class="col-sm-6 col-xs-12">
