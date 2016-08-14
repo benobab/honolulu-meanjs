@@ -20,6 +20,14 @@
     border-color: white;
 }
 
-.margin-top-5{
-    margin-top: 5px;
+.margin-bottom-5{
+    margin-bottom: 5px;
+}
+
+.customer-detail-modal{
+   padding: 20px;
+}
+
+.customer-detail-body{
+    word-wrap: break-word;
 }

@@ -1,0 +1,37 @@
+<section class="customer-detail-modal">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-xs-8 cos-xs-offset-1">
+        <h1>Customer: {{customer.firstname + ' ' + customer.lastname}}</h1>
+      </div>
+      <div class="col-xs-2 pull-right">
+        <button class="btn btn-lg btn-primary"ng-click="cancel()"><i class="glyphicon glyphicon-resize-small"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="jumbotron">
+    <div class="row customer-detail-body">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h2><i class="glyphicon glyphicon-info-sign"> {{customer._id}}</i></h2>
+      </div>
+      <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-1">
+        <h2><i class="glyphicon glyphicon-envelope"> {{customer.email}}</i></h2>
+      </div>
+      <div class="col-xs-10 col-xs-offset-1 col-md-4 col-md-offset-1">
+        <h2><i class="glyphicon glyphicon-map-marker"> {{customer.suburb}}</i></h2>
+        <h2><i class="glyphicon glyphicon-flag"> {{customer.country}}</i></h2>
+      </div>
+    </div>
+  </div>
+  
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="customer.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="customer.user" ng-bind="customer.user.displayName"></span>
+      <span ng-if="!customer.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.customer.content"></p>
+</section>

@@ -44,7 +44,7 @@
           customerResolve: getCustomer
         },
         data: {
-          pageTitle: 'Customer {{ customerResolve.title }}'
+          pageTitle: 'Customer {{ customerResolve.firstname }}'
         }
       });
   }

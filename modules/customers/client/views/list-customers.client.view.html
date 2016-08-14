@@ -4,26 +4,25 @@
       <div class="col-xs-6 pull-left">
         <h1>My Customers</h1>
       </div>
-      
     </div>
   </div>
   <div class="row">
     <div class="col-sm-8 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg margin-bottom-5">
         <input type="text" class="form-control" placeholder="Search a customer..." ng-model="searchText.$">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button">Go!</button>
         </span>
       </div><!-- /input-group -->
     </div><!-- /.col-lg-6 -->
-    <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1 margin-top-5">
+    <div class="col-sm-4 col-sm-offset-0 col-xs-10 col-xs-offset-1">
       <button class="btn btn-success btn-block btn-lg" data-ui-sref="customers.create"><i class="glyphicon glyphicon-plus"> New Customer</i></button>
     </div>
   </div>
   
   <div class="list-group">
     <div class="col-xs-6 col-sm-4" ng-repeat="customer in vm.customers |filter:searchText">
-      <a ui-sref="customers.view({ customerId: customer._id })" class="list-group-item customers-list-item">
+      <a  ng-click="vm.modalUpdate('lg',customer)" class="list-group-item customers-list-item"> <!-- ui-sref="customers.view({ customerId: customer._id })" -->
         <div ng-class="{'text-primary': customer.referred, 'text-danger':!customer.referred}" class="text-center">
           <i class="glyphicon glyphicon-user cust-profile-list" aria-hidden="true"></i>
         </div>
