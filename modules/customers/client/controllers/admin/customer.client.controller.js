@@ -3,7 +3,7 @@
 
   angular
     .module('customers.admin')
-    .controller('CustomersController', CustomersController);
+    .controller('AdminCustomersController', CustomersController);
 
   CustomersController.$inject = ['$scope', '$state', '$window', 'customerResolve', 'Authentication'];
 

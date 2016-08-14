@@ -19,7 +19,7 @@ var CustomerSchema = new Schema({
     default: '',
     trim: true
   },
-  surname: {
+  lastname: {
     type: String,
     default: '',
     trim: true

@@ -1,21 +1,16 @@
-<section>
+<section class="customer-detail-modal container" ng-controller="CustomerUpdateController as updateCtrl">
   <div class="page-header">
-    <h1>{{vm.customer._id ? 'Edit Customer' : 'New Customer'}}</h1>
-  </div>
-  <div class="pull-right" ng-show="vm.customer._id">
-    <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
-    </a>
+    <h1>Edit Customer</h1>
   </div>
   <div class="col-xs-12">
-    <form name="vm.form.customerForm" ng-submit="vm.save(vm.form.customerForm.$valid)" novalidate>
+    <form>
       <fieldset>
-        <uib-alert type="danger" ng-show="vm.error" class="text-center text-danger">
-          <span ng-bind="vm.error"></span>
+        <uib-alert type="danger" ng-show="error" class="text-center text-danger">
+          <span ng-bind="error"></span>
         </uib-alert>
         <div class="row">
           <div class="col-sm-6 col-xs-12 text-center">
-            <div ng-class="{'text-primary': vm.customer.referred, 'text-danger':!vm.customer.referred}">
+            <div ng-class="{'text-primary': customer.referred, 'text-danger':!customer.referred}">
               <i class="glyphicon glyphicon-user cust-profile" aria-hidden="true"></i>
             </div>
           </div>
@@ -23,19 +18,19 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="firstname" ng-model="vm.customer.firstname" class="form-control" placeholder="Fistname" aria-describedby="basic-addon1">
+                    <input type="text" id="firstname" ng-model="customer.firstname" class="form-control" placeholder="Fistname" aria-describedby="basic-addon1">
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-list"></i></span>
-                    <input type="text" id="lastname" ng-model="vm.customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1">
+                    <input type="text" id="lastname" ng-model="customer.lastname" class="form-control" placeholder="Lastname" aria-describedby="basic-addon1">
               </div>
             </div>
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-map-marker"></i></span>
-                    <input type="text" id="suburb" ng-model="vm.customer.suburb" class="form-control" placeholder="Suburb" aria-describedby="basic-addon1">
+                    <input type="text" id="suburb" ng-model="customer.suburb" class="form-control" placeholder="Suburb" aria-describedby="basic-addon1">
               </div>
             </div>
           </div>
@@ -45,8 +40,8 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-flag"></i></span>
-                    <input type="text" id="country" ng-model="vm.customer.country" class="form-control" placeholder="Country" aria-describedby="basic-addon1">
-                    <div ng-messages="vm.form.customerForm.$error" role="alert">
+                    <input type="text" id="country" ng-model="customer.country" class="form-control" placeholder="Country" aria-describedby="basic-addon1">
+                    <div ng-messages="form.customerForm.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Country is required.</p>
                     </div>
               </div>
@@ -54,8 +49,8 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-briefcase"></i></span>
-                    <input type="text" id="industry" ng-model="vm.customer.industry" class="form-control" placeholder="Industry" aria-describedby="basic-addon1">
-                    <div ng-messages="vm.form.customerForm.$error" role="alert">
+                    <input type="text" id="industry" ng-model="customer.industry" class="form-control" placeholder="Industry" aria-describedby="basic-addon1">
+                    <div ng-messages="form.customerForm.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Industry is required.</p>
                     </div>
               </div>
@@ -65,8 +60,8 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
-                    <input type="text" id="email" ng-model="vm.customer.email" class="form-control" placeholder="email@email.com" aria-describedby="basic-addon1" required>
-                    <div ng-messages="vm.form.customerForm.email.$error" role="alert">
+                    <input type="text" id="email" ng-model="customer.email" class="form-control" placeholder="email@email.com" aria-describedby="basic-addon1" required>
+                    <div ng-messages="form.customerForm.email.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Email is required.</p>
                     </div>
               </div>
@@ -74,8 +69,8 @@
             <div class="form-group">
               <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-phone"></i></span>
-                    <input type="text" id="phone" ng-model="vm.customer.phone" class="form-control" placeholder="Phone number" aria-describedby="basic-addon1" required>
-                    <div ng-messages="vm.form.customerForm.$error" role="alert">
+                    <input type="text" id="phone" ng-model="customer.phone" class="form-control" placeholder="Phone number" aria-describedby="basic-addon1" required>
+                    <div ng-messages="form.customerForm.$error" role="alert">
                       <p class="help-block error-text" ng-message="required">Phone is required.</p>
                     </div>
               </div>
@@ -87,25 +82,25 @@
               <div class="form-group">
               <div class="input-group input-group-lg">
                 <label class="control-label" for="referred">Referred</label>
-                <input type="checkbox" id="referred" ng-model="vm.customer.referred" class="form-control" aria-describedby="basic-addon1">
+                <input type="checkbox" id="referred" ng-model="customer.referred" class="form-control" aria-describedby="basic-addon1">
               </div>
             </div>
           </div>
           <div class="col-sm-6 col-xs-12">
             <div class="form-group">
               <div class="row">
-                <div class="col-xs-3">
-                   <button class="pull-right btn btn-warning btn-lg btn-block" data-ui-sref="customers.mine">Cancel</button>
+                <div class="col-xs-3 pull-right">
+                   <button class="btn btn-warning btn-lg btn-block" ng-click="cancel()">Cancel</button>
                 </div>
                 <div class="col-xs-9">   
-                 <button  class="btn btn-block btn-lg btn-success" ng-disabled="vm.form.customerForm.$invalid">{{vm.customer._id ? 'Update' : 'Create'}}</button>
+                 <button  class="btn btn-block btn-lg btn-success" ng-click=" updateCtrl.update(customer); ok()" ng-disabled="form.customerForm.$invalid">Update and Close</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div ng-show="vm.error" class="text-danger">
-          <strong ng-bind="vm.error"></strong>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
         </div>
       </fieldset>
     </form>

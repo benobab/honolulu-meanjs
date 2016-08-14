@@ -46,8 +46,14 @@ exports.read = function (req, res) {
 exports.update = function (req, res) {
   var customer = req.customer;
 
-  customer.title = req.body.title;
-  customer.content = req.body.content;
+  customer.firstname = req.body.firstname;
+  customer.lastname = req.body.lastname;
+  customer.email = req.body.email;
+  customer.suburb = req.body.suburb;
+  customer.industry = req.body.industry;
+  customer.country = req.body.country;
+  customer.phone = req.body.phone;
+  customer.referred = req.body.referred;
 
   customer.save(function (err) {
     if (err) {
